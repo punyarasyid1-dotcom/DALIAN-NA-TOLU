@@ -1,0 +1,326 @@
+/* VARIABLES & RESET */
+:root {
+    --primary-color: #4a0404; /* Merah Marun Gelap (Warna Ulos) */
+    --accent-color: #d4af37;  /* Emas Mewah */
+    --text-dark: #1a1a1a;
+    --text-light: #f4f4f4;
+    --bg-light: #ffffff;
+    --bg-offwhite: #f9f9fc;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 0;
+    z-index: 1000;
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--text-light);
+    z-index: 1001;
+}
+
+.logo span { color: var(--accent-color); }
+.navbar.scrolled .logo { color: var(--primary-color); }
+
+.nav-links { display: flex; gap: 30px; }
+.nav-links li a {
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover { color: var(--accent-color); }
+.navbar.scrolled .nav-links li a { color: var(--text-dark); }
+.navbar.scrolled .nav-links li a:hover { color: var(--primary-color); }
+
+/* HERO SECTION */
+.hero {
+    height: 100vh;
+    width: 100%;
+    /* Ganti 'background.jpg' dengan gambar Danau Toba/Ulos Anda */
+    background: url('background.jpg') no-repeat center center/cover;
+    background-attachment: fixed; /* Parallax Effect */
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(74, 4, 4, 0.8), rgba(0, 0, 0, 0.6));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding-left: 5%; /* Sedikit ke kiri agar modern */
+    max-width: 800px;
+    color: white;
+}
+
+.hero-content .subtitle {
+    color: var(--accent-color);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.hero-content h2 {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    max-width: 500px;
+}
+
+/* BUTTON MODERN */
+.btn-primary {
+    padding: 15px 40px;
+    background: linear-gradient(45deg, var(--primary-color), #800000);
+    color: white;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(74, 4, 4, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(74, 4, 4, 0.5);
+    background: linear-gradient(45deg, #800000, var(--primary-color));
+}
+
+/* SECTIONS GENERAL */
+.section-padding { padding: 100px 0; }
+.section-header h3 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.line-accent {
+    width: 60px; height: 3px; background: var(--accent-color); margin-bottom: 30px;
+}
+
+/* FILOSOFI */
+.content-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.placeholder-img {
+    height: 400px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 5rem;
+    color: #ccc;
+    box-shadow: 20px 20px 0px var(--primary-color); /* Efek offset shadow */
+}
+
+/* UNSUR CARDS */
+.section-dark {
+    background-color: var(--bg-offwhite);
+    padding: 100px 0;
+}
+
+.text-center { text-align: center; margin-bottom: 60px; }
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-bottom: 4px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    border-bottom: 4px solid var(--primary-color);
+}
+
+.icon-circle {
+    width: 80px; height: 80px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.card h4 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.card .role {
+    color: #888;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.attitude {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+/* NILAI LIST */
+.values-list { max-width: 800px; margin: 0 auto; }
+.values-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.values-list li:hover { transform: scale(1.02); }
+
+.number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: rgba(212, 175, 55, 0.3);
+    margin-right: 20px;
+    line-height: 1;
+}
+
+.val-text h5 {
+    font-size: 1.2rem; margin-bottom: 5px; color: var(--text-dark);
+}
+
+/* FOOTER */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 60px 0 20px;
+}
+
+.socials { margin: 20px 0; }
+.socials a {
+    color: white; font-size: 1.2rem; margin: 0 10px; transition: 0.3s;
+}
+.socials a:hover { color: var(--accent-color); }
+.copyright { font-size: 0.8rem; color: #555; }
+
+/* ANIMATION UTILS */
+.hidden-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+.show-scroll { opacity: 1; transform: translateY(0); }
+.delay-200 { transition-delay: 0.2s; }
+.delay-400 { transition-delay: 0.4s; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-content h2 { font-size: 2.5rem; }
+    .content-split { grid-template-columns: 1fr; }
+    .nav-links { display: none; } /* Simplified for example */
+}
+/* =========================================
+   ANIMASI KLIK NAVIGASI (HIGHLIGHT EFFECT)
+   ========================================= */
+
+/* Definisi Keyframes: Kilatan halus warna emas */
+@keyframes highlightPulse {
+    0% {
+        background-color: rgba(212, 175, 55, 0.0);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+    30% {
+        background-color: rgba(212, 175, 55, 0.1); /* Latar agak emas */
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); /* Glow */
+    }
+    100% {
+        background-color: rgba(212, 175, 55, 0);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+/* Kelas ini akan ditambahkan lewat JavaScript saat diklik */
+.active-highlight {
+    animation: highlightPulse 1.5s ease-out;
+    border-radius: 10px; /* Agar sudutnya halus saat menyala */
+}
